@@ -1,0 +1,32 @@
+services:
+# ---------------------------------- To serve application --------------------------------------------------------------
+  serve:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VERSION=${VERSION}
+    env_file:
+      - path: .env
+        required: true
+    image: ip-info:${VERSION}
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    entrypoint: ["poetry", "run", "python", "main.py"]
+# ---------------------------------- To run unit tests -----------------------------------------------------------------
+  test:
+    depends_on:
+      - serve
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VERSION=${VERSION}
+    env_file:
+      - path: .env
+        required: true
+    image: ip-info:${VERSION}
+    entrypoint: ["poetry", "run", "pytest"]
+

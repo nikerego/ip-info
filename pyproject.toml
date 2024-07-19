@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "ip-info"
+version = "0.1.0"
+description = ""
+authors = ["nikerego <nikerego@umich.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.111.0"
+requests = "^2.32.3"
+pytz = "^2024.1"
+nslookup = "^1.8.1"
+
+
+[tool.poetry.group.testing.dependencies]
+pytest = "^8.2.2"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.2.2"
+pytest-cov = "^5.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

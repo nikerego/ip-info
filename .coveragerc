@@ -1,0 +1,4 @@
+[run]
+omit = tests/*
+       utils/log_config_file.py
+       app.py
